@@ -12,7 +12,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
-  api.use('jagi:astronomy');
+  api.use('jagi:astronomy@0.10.5');
   api.use('underscore');
   api.addFiles('lib/displayFormat.js');
   api.addFiles('lib/global.js');
@@ -23,7 +23,7 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api) {
   api.use('tinytest');
-  api.use('jagi:astronomy');
+  api.use('jagi:astronomy@0.10.5');
   api.use('underscore');
   api.addFiles('lib/displayFormat.js');
   api.addFiles('lib/global.js');
