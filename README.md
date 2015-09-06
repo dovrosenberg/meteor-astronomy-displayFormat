@@ -111,6 +111,7 @@ And the value is passed in simply as:
 item.getFormatted('price',2);
 ```
 
+This second value can also be useful to allow for specifying different formats for different circumstances (for example on inputs vs on display).
 
 ## License
 
