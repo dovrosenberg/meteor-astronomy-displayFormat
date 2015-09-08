@@ -1,6 +1,6 @@
 Package.describe({
   name: 'dovrosenberg:astronomy-displayformat',
-  version: '0.0.3',
+  version: '1.0.0',
   // Brief, one-line summary of the package.
   summary: 'Display formatting module for jagi:meteor-astronomy',
   // URL to the Git repository containing the source code for this package.

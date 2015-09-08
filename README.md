@@ -19,13 +19,15 @@ $ meteor add dovrosenberg:astronomy-displayformats
 
 Refer to the [Astronomy](https://github.com/jagi/meteor-astronomy/) package for detailed explanations of the underlying framework.
 
+<u>WARNING: As of version 1.0.0, the attribute used is called displayFormat, rather than format.</u>
+
 ### Defining formats
 Formats are defined in a manner very similar to types.
 
 ```js
 Astro.createDisplayFormat({
   name: 'currency',
-  format: function(value) {
+  displayFormat: function(value) {
     return "$" + value;
   }
 });
@@ -39,7 +41,7 @@ Item = Astro.Class({
   fields: {
      price: {
         type: 'number',
-        format: 'currency'
+        displayFormat: 'currency'
     }
   }
 });
@@ -52,7 +54,7 @@ You can also tie a format to a specific type:
 ```js
 Astro.createDisplayFormat({
   name: 'currency',
-  format: function(value) {
+  displayFormat: function(value) {
     return "$" + value;
   },
   defaultForTypes: ['number']
@@ -72,19 +74,19 @@ var item = new Item({price:14});
 console.log(item.getFormatted('price'));  // still outputs $14
 ```
 
-This default format for a type will be overridden by any format applyied to a specific field.
+This default format for a type will be overridden by any format applied to a specific field.
 
 ### Getting formatted values
 This module adds to each class a `getFormatted()` function that mirrors the `get()` function, but returns a formatted value.
 
 ```js
 // Return the formatted value of the "phone" field
-obj.getFormatter('phone');
+obj.getFormatted('phone');
 ```
 
 ```js
 // Return only "title" and "commentsCount" fields' formatted values.
-obj.getFormatter(['title', 'commentsCount']);
+obj.getFormatted(['title', 'commentsCount']);
 ```
 
 ```js
@@ -100,7 +102,7 @@ Finally, any format function can take second parameter:
 ```js
 Astro.createDisplayFormat({
   name: 'currency',
-  format: function(value, decimals) {
+  displayFormat: function(value, decimals) {
      ...
   }
 });
@@ -111,7 +113,17 @@ And the value is passed in simply as:
 item.getFormatted('price',2);
 ```
 
-This second value can also be useful to allow for specifying different formats for different circumstances (for example on inputs vs on display).
+This second value can also be useful to allow for specifying different formats for different circumstances (for example on inputs vs on display):
+```js
+Astro.createDisplayFormat({
+  name: 'currency',
+  displayFormat: function(value, formatToUse) {
+    switch (formatToUse) {
+      ...
+    }
+  }
+});
+```
 
 ## License
 
